@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Prediction Result</title>
+
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='background.png') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #000;
+        }
+
+        .container {
+            width: 65%;
+            margin: 80px auto;
+            padding: 40px;
+            border-radius: 20px;
+            background: transparent;  /* TRANSPARENT */
+            box-shadow: none;         /* REMOVE SHADOW */
+        }
+
+        h1, h2, p {
+            text-align: center;
+        }
+
+        ul li {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #0066ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 17px;
+        }
+
+        .back-btn:hover {
+            background: #0049c9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Prediction Results</h1>
+
+        <p><strong>Entered Symptoms:</strong> {{ symptoms }}</p>
+
+        <h2>Best Model Result</h2>
+        <p><strong>Model Used:</strong> {{ model_used }}</p>
+        <p><strong>Predicted Disease:</strong> {{ disease }}</p>
+        <p><strong>Confidence:</strong> {{ confidence }}</p>
+
+        <h2>Description</h2>
+        <p>{{ description }}</p>
+
+        <h2>Precautions</h2>
+        {% if precautions %}
+            <ul>
+                {% for p in precautions %}
+                    <li>{{ p }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No precautions available.</p>
+        {% endif %}
+
+        <center>
+            <a href="/" class="back-btn">← Predict Again</a>
+        </center>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Disease Diagnosis</title>
+
+    <!-- BACKGROUND + INLINE CSS -->
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='background.png') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #000;
+        }
+
+        .container {
+            width: 60%;
+            margin: 80px auto;
+            padding: 40px;
+            border-radius: 20px;
+            background: transparent;  /* TRANSPARENT */
+            box-shadow: none;         /* REMOVE SHADOW */
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid #444;
+            margin-top: 20px;
+            font-size: 17px;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 14px 32px;
+            font-size: 18px;
+            background-color: #0066ff;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #0049c9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>AI Disease Diagnosis Chatbot</h1>
+        <p><strong>Enter Symptoms:</strong></p>
+
+        <form action="/predict" method="POST">
+            <input type="text" name="symptoms" placeholder="e.g. fever, headache, vomiting" required>
+            <br>
+            <button type="submit">Predict Disease</button>
+        </form>
+    </div>
+
+</body>
+</html>
